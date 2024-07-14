@@ -19,7 +19,6 @@ test.describe('Registration', () => {
     registrationPage = new RegistrationPage(page);
     await mainPage.clickRegistrationButton();
     await expect(page).toHaveURL('/account/register');
-    // await registrationPage.fillUserValue()
     await registrationPage.fillUserValue(
       'testers1',
       'test1234',
