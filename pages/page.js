@@ -8,20 +8,12 @@ class Page {
   async openMainUrl() {
     return await super.openUrl('/');
   }
-  async openUrl(url) {
-    await this.page.goto(url == undefined ? '/' : url);
+  async openUrl() {
+    await this.page.goto('/');
     await this.page.waitForLoadState('load');
   }
 
   async getElement(element) {
-    return await this.page.locator(element);
-  }
-
-  async getValue(element) {
-    return await this.page.innerText(element);
-  }
-
-  async fillElement(element) {
     return await this.page.locator(element);
   }
 

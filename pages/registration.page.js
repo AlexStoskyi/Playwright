@@ -7,7 +7,7 @@ const firstNameField = '#user_firstname';
 const lastNameField = '#user_lastname';
 const emailField = '#user_mail';
 const submitButton = 'input[value= Submit]';
-const errorMessageBoard = '#errorExplanation';
+const errorMessageBoard = "div[id='errorExplanation'] ul li";
 
 class RegistrationPage extends Page {
   constructor(page) {
@@ -15,25 +15,19 @@ class RegistrationPage extends Page {
     this.page = page;
   }
 
-  async getUserField() {
-    await super.getElement(loginField);
+  async getErrorMessages() {
+    return await this.page.$$eval(errorMessageBoard, (elements) =>
+      elements.map((element) => element.textContent.trim())
+    );
   }
 
-  async getErrorBoard() {
-    await super.getValue(errorMessageBoard);
-  }
-
-  async getInnerFromElement() {
-    (await super.getElement(errorMessageBoard)).innerText();
-  }
-
-  async fillUserValue(login, password, firstName, lastName, email) {
-    await (await super.fillElement(loginField)).fill(login);
-    await (await super.fillElement(passwordField)).fill(password);
-    await (await super.fillElement(confirmationField)).fill(password);
-    await (await super.fillElement(firstNameField)).fill(firstName);
-    await (await super.fillElement(lastNameField)).fill(lastName);
-    await (await super.fillElement(emailField)).fill(email);
+  async fillRegistrationUserValue(login, password, firstName, lastName, email) {
+    await (await super.getElement(loginField)).fill(login);
+    await (await super.getElement(passwordField)).fill(password);
+    await (await super.getElement(confirmationField)).fill(password);
+    await (await super.getElement(firstNameField)).fill(firstName);
+    await (await super.getElement(lastNameField)).fill(lastName);
+    await (await super.getElement(emailField)).fill(email);
     await super.clickElement(submitButton);
   }
 }

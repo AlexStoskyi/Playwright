@@ -1,28 +1,40 @@
 const { Page } = require('./page');
 const homePage = '.home';
 const registrationButton = '.register';
-const catalogContainer = '.Catalog_container__0jVbE';
-const firstCategoryLabel = 'label[for="category1"]';
+const singInButton = '.login';
+const singOutButton = '.logout';
+const loggedAsValue = '#loggedas';
+const myAccountButton = '.my-account';
 
 class MainPage extends Page {
   constructor(page) {
     super(page);
     this.page = page;
   }
-
-  async getCatalogContainer() {
-    return await super.getElement(catalogContainer);
+  async getMessageLoggedAs() {
+    return await this.page.$$eval(loggedAsValue, (elements) =>
+      elements.map((element) => element.textContent.trim())
+    );
   }
 
-  async getFirstCategoryLabel() {
-    return await super.getElement(firstCategoryLabel);
+  async getSingOutButton() {
+    await super.getElement(singOutButton);
+  }
+
+  async clickMyAccountButton() {
+    await super.clickElement(myAccountButton);
+  }
+
+  async clickSingInButton() {
+    await super.clickElement(singInButton);
+  }
+
+  async clickRegistrationButton() {
+    await super.clickElement(registrationButton);
   }
 
   async clickHomePageButton() {
     await super.clickElement(homePage);
-  }
-  async clickRegistrationButton() {
-    await super.clickElement(registrationButton);
   }
 }
 

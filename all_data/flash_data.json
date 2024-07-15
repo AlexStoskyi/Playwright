@@ -1,0 +1,6 @@
+{
+  "loginMessage": "Logged in as ",
+  "emailError": "Email is invalid",
+  "passwordError": "Invalid user or password",
+  "updateMessage": "Account was successfully updated."
+}

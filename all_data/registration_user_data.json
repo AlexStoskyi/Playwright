@@ -1,0 +1,8 @@
+{
+  "login": "standard_user",
+  "password": "secret_sauce",
+  "confirmPassword": "secret_sauce",
+  "firstName": "secret_name",
+  "lastName": "secret_lastName",
+  "email": "testgmail.com"
+}
