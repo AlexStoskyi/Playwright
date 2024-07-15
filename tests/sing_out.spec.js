@@ -8,7 +8,7 @@ const { SingInPage } = require('../pages/singIn.page');
 const USER_LOGIN = login_user_data.login;
 const USER_PASSWORD = login_user_data.password;
 
-test.describe('Sing In', () => {
+test.describe('Sing out', () => {
   let singInPage;
   let mainPage;
   let pagePage;
@@ -21,16 +21,12 @@ test.describe('Sing In', () => {
     await expect(page).toHaveURL('/');
   });
 
-  test('Sing In with invalid data', async ({ page }) => {
-    await mainPage.clickSingInButton();
-    await singInPage.signIn(page, USER_LOGIN, USER_PASSWORD + '1');
-    const errorMessages = await singInPage.getFlashErrorMessages();
-    expect(errorMessages).toContain(flash_data.passwordError);
-  });
-
-  test('Sing In with valid data', async ({ page }) => {
+  test('Sing In and sing out', async ({ page }) => {
     await singInPage.signIn(page, USER_LOGIN, USER_PASSWORD);
     const LoggedAsMessage = await mainPage.getMessageLoggedAs();
     expect(LoggedAsMessage).toContain(flash_data.loginMessage + USER_LOGIN);
+    await mainPage.clickSingOutButton();
+    const singInButton = await mainPage.getSingInButton();
+    await expect(singInButton).toBeVisible();
   });
 });

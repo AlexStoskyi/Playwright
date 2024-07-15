@@ -2,7 +2,6 @@ import registration_user_data from '../all_data/registration_user_data.json';
 import flash_data from '../all_data/flash_data.json';
 const { test, expect } = require('@playwright/test');
 const { RegistrationPage } = require('../pages/registration.page');
-const { Page } = require('../pages/page');
 const { MainPage } = require('../pages/main.page');
 
 test.describe('Registration', () => {

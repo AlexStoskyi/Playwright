@@ -17,8 +17,12 @@ class MainPage extends Page {
     );
   }
 
-  async getSingOutButton() {
-    await super.getElement(singOutButton);
+  async getSingInButton() {
+    return await super.getElement(singInButton);
+  }
+
+  async clickSingOutButton() {
+    await super.clickElement(singOutButton);
   }
 
   async clickMyAccountButton() {

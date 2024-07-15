@@ -21,6 +21,7 @@ class Page {
     await (await this.getElement(element)).click();
   }
 
+
   async getValueElement(element) {
     await this.getValue(element);
   }
